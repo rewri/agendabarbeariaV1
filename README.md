@@ -28,7 +28,9 @@ docker-compose up --build --remove-orphans
 bin/cake server -p 8765
 ```
 
-Acesse `http://localhost:8765/admin/users`
+Acesse `http://localhost:8765/`
+
+Acesse `http://localhost:8765/admin/establishments`
 
 ## Configuração
 
