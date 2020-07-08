@@ -1,97 +1,75 @@
 <?php
-/**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         1.2.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
- */
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\PagesController;
-use Cake\Core\App;
-use Cake\Core\Configure;
-use Cake\Http\Response;
-use Cake\Http\ServerRequest;
-use Cake\TestSuite\IntegrationTestCase;
-use Cake\View\Exception\MissingTemplateException;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
 
 /**
- * PagesControllerTest class
+ * App\Controller\PagesController Test Case
+ *
+ * @uses \App\Controller\PagesController
  */
-class PagesControllerTest extends IntegrationTestCase
+class PagesControllerTest extends TestCase
 {
+    use IntegrationTestTrait;
+
     /**
-     * testMultipleGet method
+     * Fixtures
+     *
+     * @var array
+     */
+    public $fixtures = [
+        'app.Pages',
+    ];
+
+    /**
+     * Test index method
      *
      * @return void
      */
-    public function testMultipleGet()
+    public function testIndex()
     {
-        $this->get('/');
-        $this->assertResponseOk();
-        $this->get('/');
-        $this->assertResponseOk();
+        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * testDisplay method
+     * Test view method
      *
      * @return void
      */
-    public function testDisplay()
+    public function testView()
     {
-        $this->get('/pages/home');
-        $this->assertResponseOk();
-        $this->assertResponseContains('CakePHP');
-        $this->assertResponseContains('<html>');
+        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test that missing template renders 404 page in production
+     * Test add method
      *
      * @return void
      */
-    public function testMissingTemplate()
+    public function testAdd()
     {
-        Configure::write('debug', false);
-        $this->get('/pages/not_existing');
-
-        $this->assertResponseError();
-        $this->assertResponseContains('Error');
+        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test that missing template in debug mode renders missing_template error page
+     * Test edit method
      *
      * @return void
      */
-    public function testMissingTemplateInDebug()
+    public function testEdit()
     {
-        Configure::write('debug', true);
-        $this->get('/pages/not_existing');
-
-        $this->assertResponseFailure();
-        $this->assertResponseContains('Missing Template');
-        $this->assertResponseContains('Stacktrace');
-        $this->assertResponseContains('not_existing.ctp');
+        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test directory traversal protection
+     * Test delete method
      *
      * @return void
      */
-    public function testDirectoryTraversalProtection()
+    public function testDelete()
     {
-        $this->get('/pages/../Layout/ajax');
-        $this->assertResponseCode(403);
-        $this->assertResponseContains('Forbidden');
+        $this->markTestIncomplete('Not implemented yet.');
     }
 }

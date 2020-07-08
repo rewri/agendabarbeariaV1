@@ -1,8 +1,8 @@
 version: "3"
 services:
 
-    database:
-        container_name: database
+    database-barbearia:
+        container_name: database-barbearia
         image: mysql:5.6
         ports:
             - "3306:3306"
