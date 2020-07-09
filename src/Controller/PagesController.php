@@ -2,20 +2,17 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Auth\DefaultPasswordHasher;
 
-/**
- * Pages Controller
- *
- *
- * @method \App\Model\Entity\Page[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
 class PagesController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['register', 'logout']);
+    }
+
     public function home()
     {
         $this->layout = 'home';
@@ -23,86 +20,52 @@ class PagesController extends AppController
 
     public function login()
     {
+        $this->loadModel('Users');
         $this->layout = 'login';
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Page id.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $page = $this->Pages->get($id, [
-            'contain' => [],
-        ]);
-
-        $this->set('page', $page);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $page = $this->Pages->newEntity();
         if ($this->request->is('post')) {
-            $page = $this->Pages->patchEntity($page, $this->request->getData());
-            if ($this->Pages->save($page)) {
-                $this->Flash->success(__('The page has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect(['controller' => 'Pages', 'action' => 'agenda', 'uuid' => $this->Auth->user('uuid')]);
             }
-            $this->Flash->error(__('The page could not be saved. Please, try again.'));
+            $this->Flash->error('Usuário ou senha incorretos.');
         }
-        $this->set(compact('page'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Page id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
+    public function logout()
     {
-        $page = $this->Pages->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $page = $this->Pages->patchEntity($page, $this->request->getData());
-            if ($this->Pages->save($page)) {
-                $this->Flash->success(__('The page has been saved.'));
+        $this->Flash->success('Volte sempre!');
+        return $this->redirect($this->Auth->logout());
+    }
 
-                return $this->redirect(['action' => 'index']);
+    public function register()
+    {
+        $this->loadModel('Users');
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Usuário cadastrado com sucesso!'));
+                return $this->redirect(['action' => 'register']);
             }
-            $this->Flash->error(__('The page could not be saved. Please, try again.'));
+            if ($user->errors('username._isUnique')) {
+                $this->Flash->error($user->errors('username._isUnique'));
+                return;
+            }
+            $this->Flash->error(__('Erro ao cadastrar usuário. Tente novamente.'));
         }
-        $this->set(compact('page'));
+        $this->set('user', $user);
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Page id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
+    public function remember()
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $page = $this->Pages->get($id);
-        if ($this->Pages->delete($page)) {
-            $this->Flash->success(__('The page has been deleted.'));
-        } else {
-            $this->Flash->error(__('The page could not be deleted. Please, try again.'));
-        }
 
-        return $this->redirect(['action' => 'index']);
     }
+
+    public function agenda($uuid = null)
+    {
+
+    }
+
+
 }

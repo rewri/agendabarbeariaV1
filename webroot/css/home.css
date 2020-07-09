@@ -68,6 +68,18 @@ body {
 .masthead-brand {
     margin-top: 10px;
     margin-bottom: 10px;
+    font-family: 'Galada', cursive;
+    font-size: 32px;
+}
+
+.masthead-username {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.masthead-username span {
+    color: #00bc8c;
+    font-weight: 600;
 }
 
 .masthead-nav > li {
@@ -79,7 +91,7 @@ body {
 .masthead-nav > li > a {
     padding-right: 0;
     padding-left: 0;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: #fff; /* IE8 proofing */
     color: rgba(255, 255, 255, 0.75);
@@ -154,6 +166,9 @@ body {
         position: absolute;
         bottom: 0;
     }
+    .mastfoot .inner {
+        padding: 0 0 0 15px;
+    }
     .btn-agenda {
         min-width: 80%;
     }
@@ -198,6 +213,6 @@ body {
     .masthead,
     .mastfoot,
     .cover-container {
-        width: 700px;
+        width: 800px;
     }
 }

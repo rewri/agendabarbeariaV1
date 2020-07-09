@@ -1,20 +1,14 @@
-body {
-  padding-bottom: 40px;
-}
-
-.form-signin {
+.form-signin, .form-register {
   max-width: 600px;
-  padding: 5px;
   margin: 0 auto;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-signin .form-signin-heading, .form-signin .checkbox, .form-register .form-register-heading, .form-register .checkbox {
   margin-bottom: 10px;
 }
-.form-signin .checkbox {
+.form-signin .checkbox, .form-register .checkbox {
   font-weight: normal;
 }
-.form-signin .form-control {
+.form-signin .form-control, .form-register .form-control {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
@@ -33,4 +27,12 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form-register input {
+  margin-bottom: 15px;
+}
+
+.form-register label {
+  font-weight: 300;
 }

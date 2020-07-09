@@ -21,9 +21,13 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
 
-    $routes->connect('/login', ['controller' => 'Pages', 'action' => 'login']);
+    $routes->connect('/entrar', ['controller' => 'Pages', 'action' => 'login']);
+    $routes->connect('/sair', ['controller' => 'Pages', 'action' => 'logout']);
 
     $routes->connect('/cadastrar', ['controller' => 'Pages', 'action' => 'register']);
+
+    $routes->connect('/agenda/:uuid', ['controller' => 'Pages', 'action' => 'agenda'], ['pass' => ['uuid']]);
+    $routes->connect('/agenda', ['controller' => 'Pages', 'action' => 'agenda']);
 
     $routes->fallbacks(DashedRoute::class);
 });
