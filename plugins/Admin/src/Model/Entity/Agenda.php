@@ -2,7 +2,6 @@
 namespace Admin\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Utility\Text;
 
 /**
  * Agenda Entity
@@ -13,7 +12,7 @@ use Cake\Utility\Text;
  * @property int $establishment_id
  * @property int $barber_id
  * @property int $service_id
- * @property \Cake\I18n\FrozenDate $service_date
+ * @property \Cake\I18n\FrozenTime $service_date
  * @property \Cake\I18n\FrozenTime $service_start
  * @property \Cake\I18n\FrozenTime $service_end
  * @property string|null $obs
@@ -39,7 +38,7 @@ class Agenda extends Entity
      * @var array
      */
     protected $_accessible = [
-        'uuid' => false,
+        'uuid' => true,
         'user_id' => true,
         'establishment_id' => true,
         'barber_id' => true,
@@ -57,9 +56,4 @@ class Agenda extends Entity
         'barber' => true,
         'service' => true,
     ];
-
-    protected function _setUuid($uuid)
-    {
-        return Text::uuid($uuid);
-    }
 }

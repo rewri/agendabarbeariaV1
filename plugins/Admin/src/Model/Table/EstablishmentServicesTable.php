@@ -7,20 +7,23 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * EstablishmentSchedules Model
+ * EstablishmentServices Model
  *
  * @property \Admin\Model\Table\EstablishmentsTable&\Cake\ORM\Association\BelongsTo $Establishments
+ * @property \Admin\Model\Table\ServicesTable&\Cake\ORM\Association\BelongsTo $Services
  *
- * @method \Admin\Model\Entity\EstablishmentSchedule get($primaryKey, $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule newEntity($data = null, array $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule[] newEntities(array $data, array $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule[] patchEntities($entities, array $data, array $options = [])
- * @method \Admin\Model\Entity\EstablishmentSchedule findOrCreate($search, callable $callback = null, $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService get($primaryKey, $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService newEntity($data = null, array $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService[] newEntities(array $data, array $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService[] patchEntities($entities, array $data, array $options = [])
+ * @method \Admin\Model\Entity\EstablishmentService findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class EstablishmentSchedulesTable extends Table
+class EstablishmentServicesTable extends Table
 {
     /**
      * Initialize method
@@ -32,14 +35,21 @@ class EstablishmentSchedulesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('establishment_schedules');
+        $this->setTable('establishment_services');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Establishments', [
             'foreignKey' => 'establishment_id',
             'joinType' => 'INNER',
             'className' => 'Admin.Establishments',
+        ]);
+        $this->belongsTo('Services', [
+            'foreignKey' => 'service_id',
+            'joinType' => 'INNER',
+            'className' => 'Admin.Services',
         ]);
     }
 
@@ -61,28 +71,12 @@ class EstablishmentSchedulesTable extends Table
             ->allowEmptyString('uuid');
 
         $validator
-            ->integer('weekday')
-            ->notEmptyString('weekday');
+            ->decimal('price')
+            ->notEmptyString('price');
 
         $validator
-            ->boolean('open')
-            ->notEmptyString('open');
-
-        $validator
-            ->time('start_time')
-            ->allowEmptyTime('start_time');
-
-        $validator
-            ->time('end_time')
-            ->allowEmptyTime('end_time');
-
-        $validator
-            ->time('lunch_time')
-            ->allowEmptyTime('lunch_time');
-
-        $validator
-            ->integer('lunch_length')
-            ->allowEmptyString('lunch_length');
+            ->boolean('enabled')
+            ->notEmptyString('enabled');
 
         return $validator;
     }
@@ -97,6 +91,7 @@ class EstablishmentSchedulesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['establishment_id'], 'Establishments'));
+        $rules->add($rules->existsIn(['service_id'], 'Services'));
 
         return $rules;
     }

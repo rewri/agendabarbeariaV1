@@ -9,19 +9,10 @@
         </div>
     </div>
 
-    <div class="row mb-30">
-        <div class="col-md-6 col-xs-12 hidden">
-            <?= $this->Html->link('<i class="fa fa-facebook-official"></i><br>CADASTRAR COM FACEBOOK', ['controller' => 'Pages', 'action' => 'register-facebook'], ['class' => 'btn btn-lg btn-primary btn-block mb-10', 'escape' => false]) ?>
-        </div>
-        <div class="col-md-6 col-xs-12 hidden">
-            <?= $this->Html->link('<i class="fa fa-google"></i><br>CADASTRAR COM GOOGLE', ['controller' => 'Pages', 'action' => 'register-google'], ['class' => 'btn btn-lg btn-danger btn-block mb-10', 'escape' => false]) ?>
-        </div>
-    </div>
-
     <label for="name">Seu nome completo:</label>
     <?= $this->Form->text('name', ['type' => 'text', 'id' => 'name', 'class' => 'form-control', 'placeholder' => 'Nome completo', 'required' => true, 'autofocus' => true, 'label' => false]); ?>
 
-    <label for="username">Seu email (será usado para entrar no sistema):</label>
+    <label for="username">Seu email (será seu login no sistema):</label>
     <?= $this->Form->text('username', ['type' => 'email', 'id' => 'username', 'class' => 'form-control', 'placeholder' => 'Email', 'required' => true, 'label' => false]); ?>
 
     <label for="phone">Seu telefone:</label>

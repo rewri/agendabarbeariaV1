@@ -2,7 +2,6 @@
 namespace Admin\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Utility\Text;
 
 /**
  * Establishment Entity
@@ -11,6 +10,9 @@ use Cake\Utility\Text;
  * @property string|null $uuid
  * @property string $name
  * @property string|null $description
+ * @property string|null $address
+ * @property string|null $city
+ * @property string|null $phone
  * @property bool $enabled
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -31,9 +33,12 @@ class Establishment extends Entity
      * @var array
      */
     protected $_accessible = [
-        'uuid' => false,
+        'uuid' => true,
         'name' => true,
         'description' => true,
+        'address' => true,
+        'city' => true,
+        'phone' => true,
         'enabled' => true,
         'created' => true,
         'modified' => true,
@@ -41,9 +46,4 @@ class Establishment extends Entity
         'barbers' => true,
         'establishment_schedules' => true,
     ];
-
-    protected function _setUuid($uuid)
-    {
-        return Text::uuid($uuid);
-    }
 }

@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \Admin\Model\Table\AgendasTable&\Cake\ORM\Association\HasMany $Agendas
  * @property \Admin\Model\Table\BarbersTable&\Cake\ORM\Association\HasMany $Barbers
  * @property \Admin\Model\Table\EstablishmentSchedulesTable&\Cake\ORM\Association\HasMany $EstablishmentSchedules
+ * @property &\Cake\ORM\Association\HasMany $EstablishmentServices
  *
  * @method \Admin\Model\Entity\Establishment get($primaryKey, $options = [])
  * @method \Admin\Model\Entity\Establishment newEntity($data = null, array $options = [])
@@ -54,6 +55,10 @@ class EstablishmentsTable extends Table
             'foreignKey' => 'establishment_id',
             'className' => 'Admin.EstablishmentSchedules',
         ]);
+        $this->hasMany('EstablishmentServices', [
+            'foreignKey' => 'establishment_id',
+            'className' => 'Admin.EstablishmentServices',
+        ]);
     }
 
     /**
@@ -82,6 +87,21 @@ class EstablishmentsTable extends Table
         $validator
             ->scalar('description')
             ->allowEmptyString('description');
+
+        $validator
+            ->scalar('address')
+            ->maxLength('address', 150)
+            ->allowEmptyString('address');
+
+        $validator
+            ->scalar('city')
+            ->maxLength('city', 80)
+            ->allowEmptyString('city');
+
+        $validator
+            ->scalar('phone')
+            ->maxLength('phone', 50)
+            ->allowEmptyString('phone');
 
         $validator
             ->boolean('enabled')

@@ -2,7 +2,6 @@
 namespace Admin\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Utility\Text;
 
 /**
  * Role Entity
@@ -35,9 +34,4 @@ class Role extends Entity
         'modified' => true,
         'logins' => true,
     ];
-
-    protected function _setUuid($uuid)
-    {
-        return Text::uuid($uuid);
-    }
 }

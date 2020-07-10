@@ -37,3 +37,7 @@
 .weight-600 { font-weight: 600; }
 .weight-700 { font-weight: 700; }
 .weight-800 { font-weight: 800; }
+
+.valign-middle {
+    vertical-align: middle !important;
+}

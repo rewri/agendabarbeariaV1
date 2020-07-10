@@ -10,7 +10,23 @@ class PagesController extends AppController
     public function initialize()
     {
         parent::initialize();
+
+        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        date_default_timezone_set('America/Sao_Paulo');
+
         $this->Auth->allow(['register', 'logout']);
+
+        $this->loadModel('Users');
+        $this->loadModel('Admin.Establishments');
+
+        $isMobile = $this->request->is('mobile') ? true : false;
+        $this->set('isMobile', $isMobile);
+
+        $establishment = $this->Establishments->get(1);
+        $this->set('establishment', $establishment);
+
+        $weeknames = [0 => 'Domingo', 1 => 'Segunda', 2 => 'Terça', 3 => 'Quarta', 4 => 'Quinta', 5 => 'Sexta', 6 => 'Sábado'];
+        $this->set('weeknames', $weeknames);
     }
 
     public function home()
@@ -20,8 +36,6 @@ class PagesController extends AppController
 
     public function login()
     {
-        $this->loadModel('Users');
-        $this->layout = 'login';
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
@@ -40,7 +54,6 @@ class PagesController extends AppController
 
     public function register()
     {
-        $this->loadModel('Users');
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -64,7 +77,29 @@ class PagesController extends AppController
 
     public function agenda($uuid = null)
     {
+        $establishment = $this->Establishments->get(1, ['contain' => ['EstablishmentSchedules', 'EstablishmentServices', 'EstablishmentServices.Services']]);
+        $this->set('establishment', $establishment);
 
+        $this->loadModel('Admin.Agendas');
+        $this->loadModel('Admin.Barbers');
+        $agenda = $this->Agendas->find('all')
+            ->where([
+                'Agendas.user_id' => 1,
+                'Agendas.establishment_id' => 1,
+                'Agendas.canceled' => false,
+            ])
+            ->contain([
+                'Barbers',
+                'Services'
+            ])
+            ->order([
+                'Agendas.service_date' => 'ASC',
+                'Agendas.service_start' => 'ASC',
+            ])
+            ->limit(10)
+            ->toArray();
+
+        $this->set('agenda', $agenda);
     }
 
 

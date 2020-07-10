@@ -24,6 +24,9 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('uuid') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('address') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('city') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('enabled') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -36,6 +39,9 @@
                 <td><?= $this->Number->format($establishment->id) ?></td>
                 <td><?= h($establishment->uuid) ?></td>
                 <td><?= h($establishment->name) ?></td>
+                <td><?= h($establishment->address) ?></td>
+                <td><?= h($establishment->city) ?></td>
+                <td><?= h($establishment->phone) ?></td>
                 <td><?= h($establishment->enabled) ?></td>
                 <td><?= h($establishment->created) ?></td>
                 <td><?= h($establishment->modified) ?></td>

@@ -31,6 +31,18 @@
             <td><?= h($establishment->name) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Address') ?></th>
+            <td><?= h($establishment->address) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('City') ?></th>
+            <td><?= h($establishment->city) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Phone') ?></th>
+            <td><?= h($establishment->phone) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($establishment->id) ?></td>
         </tr>
@@ -141,41 +153,12 @@
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Uuid') ?></th>
                 <th scope="col"><?= __('Establishment Id') ?></th>
-                <th scope="col"><?= __('Sunday') ?></th>
-                <th scope="col"><?= __('Sunday Start') ?></th>
-                <th scope="col"><?= __('Sunday End') ?></th>
-                <th scope="col"><?= __('Sunday Pause Start') ?></th>
-                <th scope="col"><?= __('Sunday Pause End') ?></th>
-                <th scope="col"><?= __('Monday') ?></th>
-                <th scope="col"><?= __('Monday Start') ?></th>
-                <th scope="col"><?= __('Monday End') ?></th>
-                <th scope="col"><?= __('Monday Pause Start') ?></th>
-                <th scope="col"><?= __('Monday Pause End') ?></th>
-                <th scope="col"><?= __('Tuesday') ?></th>
-                <th scope="col"><?= __('Tuesday Start') ?></th>
-                <th scope="col"><?= __('Tuesday End') ?></th>
-                <th scope="col"><?= __('Tuesday Pause Start') ?></th>
-                <th scope="col"><?= __('Tuesday Pause End') ?></th>
-                <th scope="col"><?= __('Wednesday') ?></th>
-                <th scope="col"><?= __('Wednesday Start') ?></th>
-                <th scope="col"><?= __('Wednesday End') ?></th>
-                <th scope="col"><?= __('Wednesday Pause Start') ?></th>
-                <th scope="col"><?= __('Wednesday Pause End') ?></th>
-                <th scope="col"><?= __('Thursday') ?></th>
-                <th scope="col"><?= __('Thursday Start') ?></th>
-                <th scope="col"><?= __('Thursday End') ?></th>
-                <th scope="col"><?= __('Thursday Pause Start') ?></th>
-                <th scope="col"><?= __('Thursday Pause End') ?></th>
-                <th scope="col"><?= __('Friday') ?></th>
-                <th scope="col"><?= __('Friday Start') ?></th>
-                <th scope="col"><?= __('Friday End') ?></th>
-                <th scope="col"><?= __('Friday Pause Start') ?></th>
-                <th scope="col"><?= __('Friday Pause End') ?></th>
-                <th scope="col"><?= __('Saturday') ?></th>
-                <th scope="col"><?= __('Saturday Start') ?></th>
-                <th scope="col"><?= __('Saturday End') ?></th>
-                <th scope="col"><?= __('Saturday Pause Start') ?></th>
-                <th scope="col"><?= __('Saturday Pause End') ?></th>
+                <th scope="col"><?= __('Weekday') ?></th>
+                <th scope="col"><?= __('Open') ?></th>
+                <th scope="col"><?= __('Start Time') ?></th>
+                <th scope="col"><?= __('End Time') ?></th>
+                <th scope="col"><?= __('Lunch Time') ?></th>
+                <th scope="col"><?= __('Lunch Length') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($establishment->establishment_schedules as $establishmentSchedules): ?>
@@ -183,41 +166,12 @@
                 <td><?= h($establishmentSchedules->id) ?></td>
                 <td><?= h($establishmentSchedules->uuid) ?></td>
                 <td><?= h($establishmentSchedules->establishment_id) ?></td>
-                <td><?= h($establishmentSchedules->sunday) ?></td>
-                <td><?= h($establishmentSchedules->sunday_start) ?></td>
-                <td><?= h($establishmentSchedules->sunday_end) ?></td>
-                <td><?= h($establishmentSchedules->sunday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->sunday_pause_end) ?></td>
-                <td><?= h($establishmentSchedules->monday) ?></td>
-                <td><?= h($establishmentSchedules->monday_start) ?></td>
-                <td><?= h($establishmentSchedules->monday_end) ?></td>
-                <td><?= h($establishmentSchedules->monday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->monday_pause_end) ?></td>
-                <td><?= h($establishmentSchedules->tuesday) ?></td>
-                <td><?= h($establishmentSchedules->tuesday_start) ?></td>
-                <td><?= h($establishmentSchedules->tuesday_end) ?></td>
-                <td><?= h($establishmentSchedules->tuesday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->tuesday_pause_end) ?></td>
-                <td><?= h($establishmentSchedules->wednesday) ?></td>
-                <td><?= h($establishmentSchedules->wednesday_start) ?></td>
-                <td><?= h($establishmentSchedules->wednesday_end) ?></td>
-                <td><?= h($establishmentSchedules->wednesday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->wednesday_pause_end) ?></td>
-                <td><?= h($establishmentSchedules->thursday) ?></td>
-                <td><?= h($establishmentSchedules->thursday_start) ?></td>
-                <td><?= h($establishmentSchedules->thursday_end) ?></td>
-                <td><?= h($establishmentSchedules->thursday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->thursday_pause_end) ?></td>
-                <td><?= h($establishmentSchedules->friday) ?></td>
-                <td><?= h($establishmentSchedules->friday_start) ?></td>
-                <td><?= h($establishmentSchedules->friday_end) ?></td>
-                <td><?= h($establishmentSchedules->friday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->friday_pause_end) ?></td>
-                <td><?= h($establishmentSchedules->saturday) ?></td>
-                <td><?= h($establishmentSchedules->saturday_start) ?></td>
-                <td><?= h($establishmentSchedules->saturday_end) ?></td>
-                <td><?= h($establishmentSchedules->saturday_pause_start) ?></td>
-                <td><?= h($establishmentSchedules->saturday_pause_end) ?></td>
+                <td><?= h($establishmentSchedules->weekday) ?></td>
+                <td><?= h($establishmentSchedules->open) ?></td>
+                <td><?= h($establishmentSchedules->start_time) ?></td>
+                <td><?= h($establishmentSchedules->end_time) ?></td>
+                <td><?= h($establishmentSchedules->lunch_time) ?></td>
+                <td><?= h($establishmentSchedules->lunch_length) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'EstablishmentSchedules', 'action' => 'view', $establishmentSchedules->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'EstablishmentSchedules', 'action' => 'edit', $establishmentSchedules->id]) ?>

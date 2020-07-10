@@ -4,21 +4,21 @@ namespace Admin\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * EstablishmentSchedule Entity
+ * EstablishmentService Entity
  *
  * @property int $id
  * @property string|null $uuid
  * @property int $establishment_id
- * @property int $weekday
- * @property bool $open
- * @property \Cake\I18n\FrozenTime|null $start_time
- * @property \Cake\I18n\FrozenTime|null $end_time
- * @property \Cake\I18n\FrozenTime|null $lunch_time
- * @property int|null $lunch_length
+ * @property int $service_id
+ * @property float $price
+ * @property bool $enabled
+ * @property \Cake\I18n\FrozenTime|null $created
+ * @property \Cake\I18n\FrozenTime|null $modified
  *
  * @property \Admin\Model\Entity\Establishment $establishment
+ * @property \Admin\Model\Entity\Service $service
  */
-class EstablishmentSchedule extends Entity
+class EstablishmentService extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -32,12 +32,12 @@ class EstablishmentSchedule extends Entity
     protected $_accessible = [
         'uuid' => true,
         'establishment_id' => true,
-        'weekday' => true,
-        'open' => true,
-        'start_time' => true,
-        'end_time' => true,
-        'lunch_time' => true,
-        'lunch_length' => true,
+        'service_id' => true,
+        'price' => true,
+        'enabled' => true,
+        'created' => true,
+        'modified' => true,
         'establishment' => true,
+        'service' => true,
     ];
 }

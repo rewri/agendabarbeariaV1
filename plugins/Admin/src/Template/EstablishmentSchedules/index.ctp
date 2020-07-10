@@ -20,41 +20,12 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('uuid') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('establishment_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sunday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sunday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sunday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sunday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sunday_pause_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('monday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('monday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('monday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('monday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('monday_pause_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tuesday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tuesday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tuesday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tuesday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tuesday_pause_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('wednesday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('wednesday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('wednesday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('wednesday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('wednesday_pause_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('thursday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('thursday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('thursday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('thursday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('thursday_pause_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('friday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('friday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('friday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('friday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('friday_pause_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('saturday') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('saturday_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('saturday_end') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('saturday_pause_start') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('saturday_pause_end') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('weekday') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('open') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('start_time') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('end_time') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('lunch_time') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('lunch_length') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -64,41 +35,12 @@
                 <td><?= $this->Number->format($establishmentSchedule->id) ?></td>
                 <td><?= h($establishmentSchedule->uuid) ?></td>
                 <td><?= $establishmentSchedule->has('establishment') ? $this->Html->link($establishmentSchedule->establishment->name, ['controller' => 'Establishments', 'action' => 'view', $establishmentSchedule->establishment->id]) : '' ?></td>
-                <td><?= h($establishmentSchedule->sunday) ?></td>
-                <td><?= h($establishmentSchedule->sunday_start) ?></td>
-                <td><?= h($establishmentSchedule->sunday_end) ?></td>
-                <td><?= h($establishmentSchedule->sunday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->sunday_pause_end) ?></td>
-                <td><?= h($establishmentSchedule->monday) ?></td>
-                <td><?= h($establishmentSchedule->monday_start) ?></td>
-                <td><?= h($establishmentSchedule->monday_end) ?></td>
-                <td><?= h($establishmentSchedule->monday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->monday_pause_end) ?></td>
-                <td><?= h($establishmentSchedule->tuesday) ?></td>
-                <td><?= h($establishmentSchedule->tuesday_start) ?></td>
-                <td><?= h($establishmentSchedule->tuesday_end) ?></td>
-                <td><?= h($establishmentSchedule->tuesday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->tuesday_pause_end) ?></td>
-                <td><?= h($establishmentSchedule->wednesday) ?></td>
-                <td><?= h($establishmentSchedule->wednesday_start) ?></td>
-                <td><?= h($establishmentSchedule->wednesday_end) ?></td>
-                <td><?= h($establishmentSchedule->wednesday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->wednesday_pause_end) ?></td>
-                <td><?= h($establishmentSchedule->thursday) ?></td>
-                <td><?= h($establishmentSchedule->thursday_start) ?></td>
-                <td><?= h($establishmentSchedule->thursday_end) ?></td>
-                <td><?= h($establishmentSchedule->thursday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->thursday_pause_end) ?></td>
-                <td><?= h($establishmentSchedule->friday) ?></td>
-                <td><?= h($establishmentSchedule->friday_start) ?></td>
-                <td><?= h($establishmentSchedule->friday_end) ?></td>
-                <td><?= h($establishmentSchedule->friday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->friday_pause_end) ?></td>
-                <td><?= h($establishmentSchedule->saturday) ?></td>
-                <td><?= h($establishmentSchedule->saturday_start) ?></td>
-                <td><?= h($establishmentSchedule->saturday_end) ?></td>
-                <td><?= h($establishmentSchedule->saturday_pause_start) ?></td>
-                <td><?= h($establishmentSchedule->saturday_pause_end) ?></td>
+                <td><?= $this->Number->format($establishmentSchedule->weekday) ?></td>
+                <td><?= h($establishmentSchedule->open) ?></td>
+                <td><?= h($establishmentSchedule->start_time) ?></td>
+                <td><?= h($establishmentSchedule->end_time) ?></td>
+                <td><?= h($establishmentSchedule->lunch_time) ?></td>
+                <td><?= $this->Number->format($establishmentSchedule->lunch_length) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $establishmentSchedule->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $establishmentSchedule->id]) ?>

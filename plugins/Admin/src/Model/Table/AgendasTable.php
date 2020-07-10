@@ -83,9 +83,9 @@ class AgendasTable extends Table
             ->allowEmptyString('uuid');
 
         $validator
-            ->date('service_date')
+            ->dateTime('service_date')
             ->requirePresence('service_date', 'create')
-            ->notEmptyDate('service_date');
+            ->notEmptyDateTime('service_date');
 
         $validator
             ->time('service_start')

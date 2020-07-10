@@ -25,41 +25,12 @@
         <?php
             echo $this->Form->control('uuid');
             echo $this->Form->control('establishment_id', ['options' => $establishments]);
-            echo $this->Form->control('sunday');
-            echo $this->Form->control('sunday_start');
-            echo $this->Form->control('sunday_end');
-            echo $this->Form->control('sunday_pause_start');
-            echo $this->Form->control('sunday_pause_end');
-            echo $this->Form->control('monday');
-            echo $this->Form->control('monday_start');
-            echo $this->Form->control('monday_end');
-            echo $this->Form->control('monday_pause_start');
-            echo $this->Form->control('monday_pause_end');
-            echo $this->Form->control('tuesday');
-            echo $this->Form->control('tuesday_start');
-            echo $this->Form->control('tuesday_end');
-            echo $this->Form->control('tuesday_pause_start');
-            echo $this->Form->control('tuesday_pause_end');
-            echo $this->Form->control('wednesday');
-            echo $this->Form->control('wednesday_start');
-            echo $this->Form->control('wednesday_end');
-            echo $this->Form->control('wednesday_pause_start');
-            echo $this->Form->control('wednesday_pause_end');
-            echo $this->Form->control('thursday');
-            echo $this->Form->control('thursday_start');
-            echo $this->Form->control('thursday_end');
-            echo $this->Form->control('thursday_pause_start');
-            echo $this->Form->control('thursday_pause_end');
-            echo $this->Form->control('friday');
-            echo $this->Form->control('friday_start');
-            echo $this->Form->control('friday_end');
-            echo $this->Form->control('friday_pause_start');
-            echo $this->Form->control('friday_pause_end');
-            echo $this->Form->control('saturday');
-            echo $this->Form->control('saturday_start');
-            echo $this->Form->control('saturday_end');
-            echo $this->Form->control('saturday_pause_start');
-            echo $this->Form->control('saturday_pause_end');
+            echo $this->Form->control('weekday');
+            echo $this->Form->control('open');
+            echo $this->Form->control('start_time', ['empty' => true]);
+            echo $this->Form->control('end_time', ['empty' => true]);
+            echo $this->Form->control('lunch_time', ['empty' => true]);
+            echo $this->Form->control('lunch_length');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
