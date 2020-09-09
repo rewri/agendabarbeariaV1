@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-xs-12 col-md-12 mt-30">
         <section class="container">
-            <button type="button" class="btn btn-lg btn-block btn-success btn-agenda">AGENDAR NOVO HORÁRIO</button>
+            <?php echo $this->Html->link('AGENDAR NOVO HORÁRIO', ['controller' => 'Pages', 'action' => 'schedule', $this->Session->read('Auth.User.uuid')], ['class' => 'btn btn-lg btn-block btn-success btn-agenda']); ?>
         </section>
     </div>
     <div class="col-xs-12 col-md-12 mt-30">

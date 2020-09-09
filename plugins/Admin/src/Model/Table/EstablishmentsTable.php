@@ -50,6 +50,7 @@ class EstablishmentsTable extends Table
         $this->hasMany('Barbers', [
             'foreignKey' => 'establishment_id',
             'className' => 'Admin.Barbers',
+            'propertyName' => 'Barbers'
         ]);
         $this->hasMany('EstablishmentSchedules', [
             'foreignKey' => 'establishment_id',
@@ -58,7 +59,16 @@ class EstablishmentsTable extends Table
         $this->hasMany('EstablishmentServices', [
             'foreignKey' => 'establishment_id',
             'className' => 'Admin.EstablishmentServices',
+            'propertyName' => 'EstablishmentServices'
         ]);
+
+        // $this->belongsToMany('Services', [
+        //     'joinTable' => 'establishment_services',
+        //     'foreignKey' => 'establishment_id',
+        //     'bindingKey' => 'id',
+        //     'targetForeignKey' => 'service_id',
+        //     'propertyName' => 'Services'
+        // ]);
     }
 
     /**
@@ -109,4 +119,9 @@ class EstablishmentsTable extends Table
 
         return $validator;
     }
+
+    // public function getServicesList($establishment_id = null)
+    // {
+
+    // }
 }

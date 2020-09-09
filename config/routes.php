@@ -29,6 +29,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/agenda/:uuid', ['controller' => 'Pages', 'action' => 'agenda'], ['pass' => ['uuid']]);
     $routes->connect('/agenda', ['controller' => 'Pages', 'action' => 'agenda']);
 
+    $routes->connect('/novo-horario/:uuid', ['controller' => 'Pages', 'action' => 'schedule'], ['pass' => ['uuid']]);
+
     $routes->fallbacks(DashedRoute::class);
 });
 

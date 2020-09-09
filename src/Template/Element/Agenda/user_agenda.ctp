@@ -1,4 +1,4 @@
-<h3 class="mb-30 text-success">&bull; Meus agendamentos:</h3>
+<h3 class="mb-30 text-success">&bull; Meus agendamentos</h3>
 <?php if (!empty($agenda)) : ?>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed">

@@ -102,5 +102,79 @@ class PagesController extends AppController
         $this->set('agenda', $agenda);
     }
 
+    public function schedule($uuid = null)
+    {
+        $servicesList = $this->getServicesByEstablishment(1);
+        $this->set('servicesList', $servicesList);
+
+        $barberList = $this->getBarbersByEstablishment(1);
+        $this->set('barberList', $barberList);
+
+        $dateList = [
+            '2020-09-10',
+            '2020-09-11',
+            '2020-09-12',
+            '2020-09-14',
+            '2020-09-15',
+        ];
+        $this->set('dateList', $dateList);
+
+        $timeList = [
+            '09:00',
+            '09:30',
+            '10:00',
+            '10:30',
+        ];
+        $this->set('timeList', $timeList);
+    }
+
+    private function getServicesByEstablishment($establishmentId = null)
+    {
+        $servicesList = [];
+        $services = $this->Establishments->get($establishmentId,
+            [
+                'contain' => [
+                    'EstablishmentServices.Services' => [
+                        'conditions' => [
+                            'Services.enabled' => true,
+                            'EstablishmentServices.enabled' => true,
+                        ]
+                    ]
+                ]
+            ]
+        );
+        if (!empty($services)) {
+            foreach ($services['EstablishmentServices'] as $establishmentService) {
+                $servicesList[$establishmentService->service_id] = $establishmentService->service->name;
+            }
+            return $servicesList;
+        }
+        return null;
+    }
+
+    private function getBarbersByEstablishment($establishmentId = null)
+    {
+        $barberList = [];
+        $barbers = $this->Establishments->get(1,
+            [
+                'contain' => [
+                    'Barbers' => [
+                        'conditions' => [
+                            'Barbers.enabled' => true,
+                            'Barbers.available' => true,
+                        ]
+                    ]
+                ]
+            ]
+        );
+        if (!empty($barbers)) {
+            foreach ($barbers['Barbers'] as $establishmentBarber) {
+                $barberList[$establishmentBarber->id] = $establishmentBarber->name;
+            }
+            return $barberList;
+        }
+        return null;
+    }
+
 
 }
