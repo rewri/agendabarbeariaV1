@@ -9,7 +9,7 @@ bigodinho fininho, cabelinho na régua.
 ## Instalação
 
 ```bash
-git clone git@github.com:rewri/agendabarbeariaV1.com.br.git agendabarbearia.com.br
+git clone git@github.com:rewri/agendabarbeariaV1.git agendabarbearia.com.br
 ```
 
 ```bash
